@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hw_1ibrakhimgroup.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
@@ -24,8 +25,9 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loadData()
-        binding.rvSerial.adapter
         adapter = SerialAdapter(listSerial)
+        binding.rvSerial.adapter = adapter
+        binding.rvSerial.layoutManager = LinearLayoutManager(requireContext())
     }
 
     fun loadData() {
