@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.hw_1ibrakhimgroup.databinding.ItemSerialBinding
 
-class SerialAdapter(val Seriallist: ArrayList<SerialModel>):
+class SerialAdapter(val Seriallist: ArrayList<SerialModel>,val onClick:(SerialModel)->Unit):
     RecyclerView.Adapter<SerialAdapter.SerialViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -25,7 +25,7 @@ class SerialAdapter(val Seriallist: ArrayList<SerialModel>):
 
     override fun getItemCount(): Int = Seriallist.size
 
-    class SerialViewHolder(private val binding: ItemSerialBinding):
+    inner class SerialViewHolder(private val binding: ItemSerialBinding):
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(serialModel: SerialModel){
             binding.tvName.text = serialModel.name
@@ -33,6 +33,9 @@ class SerialAdapter(val Seriallist: ArrayList<SerialModel>):
             binding.tvEpisode.text = serialModel.episode
             Glide.with(binding.imgSerial).load(serialModel.img).into(binding.imgSerial);
 
+            binding.root.setOnClickListener {
+                onClick(serialModel)
+            }
         }
     }
 }

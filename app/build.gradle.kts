@@ -52,4 +52,8 @@ dependencies {
 
     ///Glide
     implementation(libs.glide)
+
+    ///Nav Host
+    implementation("androidx.navigation:navigation-fragment:2.9.5")
+    implementation("androidx.navigation:navigation-ui:2.9.5")
 }
