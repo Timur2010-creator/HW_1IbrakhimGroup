@@ -31,7 +31,8 @@ class MainFragment : Fragment() {
         loadData()
         adapter = SerialAdapter(listSerial,onClick = { model ->
 
-            findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(model))
+            val action = MainFragmentDirections.actionMainFragmentToDetailFragment(model)
+            findNavController().navigate(action)
         })
         binding.rvSerial.adapter = adapter
         binding.rvSerial.layoutManager = LinearLayoutManager(requireContext())

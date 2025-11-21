@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.hw_1ibrakhimgroup.databinding.FragmentDetailBinding
 
 class DetailFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailBinding
+    private val args: DetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +26,8 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val model = arguments?.getSerializable("key") as SerialModel?
+        val model =  args.model
+
 
         model?.let {
             with(binding) {
