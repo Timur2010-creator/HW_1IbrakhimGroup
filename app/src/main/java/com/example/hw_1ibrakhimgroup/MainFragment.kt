@@ -30,13 +30,8 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         loadData()
         adapter = SerialAdapter(listSerial,onClick = { model ->
-            Log.d("ololo", "onViewCreated: ${model.name}")
-            val bundle = Bundle()
-            bundle.putSerializable("key",model)
-            val detailFragment = DetailFragment()
-            detailFragment.arguments = bundle
 
-            findNavController().navigate(R.id.action_mainFragment_to_detailFragment,bundle)
+            findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(model))
         })
         binding.rvSerial.adapter = adapter
         binding.rvSerial.layoutManager = LinearLayoutManager(requireContext())
